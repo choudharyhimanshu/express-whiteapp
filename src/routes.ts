@@ -4,6 +4,8 @@
  */
 import {Router} from 'express';
 
+import UserController from './controller/user.controller';
+
 const router = Router();
 
 router.route('/').get((request, response) => {
@@ -12,5 +14,8 @@ router.route('/').get((request, response) => {
         message: 'API up and running.'
     });
 });
+
+router.route('/users').get((req, res) => UserController.index(req, res));
+router.route('/users/register').get((req, res) => UserController.register(req, res));
 
 export default router;

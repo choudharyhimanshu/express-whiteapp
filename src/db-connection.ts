@@ -10,7 +10,7 @@ const config = {
     pass: '',
     host: 'localhost',
     port: '27017',
-    database: 'local'
+    database: 'whiteapp'
 };
 
 let url;
@@ -25,4 +25,4 @@ mongoose.connect(url, {useNewUrlParser: true})
     .then(() => console.log('DB Connection successful.'))
     .catch(error => console.log(error));
 
-export const mongoConnection = mongoose.connection;
+export default mongoose;
