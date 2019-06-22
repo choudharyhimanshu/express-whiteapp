@@ -5,19 +5,11 @@
 
 import {Mongoose} from 'mongoose';
 
-const config = {
-    user: 'root',
-    pass: '',
-    host: 'localhost',
-    port: '27017',
-    database: 'whiteapp'
-};
-
 let url;
-if (config.pass) {
-    url = `mongodb://${config.user}:${config.pass}@${config.host}:${config.port}/${config.database}`;
+if (process.env.MONGODB_CONNECTION_URL) {
+    url = process.env.MONGODB_CONNECTION_URL;
 } else {
-    url = `mongodb://${config.host}:${config.port}/${config.database}`;
+    url = 'mongodb://mongo:27017/whiteapp';
 }
 
 const mongoose = new Mongoose();
